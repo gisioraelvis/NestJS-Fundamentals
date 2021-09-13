@@ -8,6 +8,7 @@ import {
   Post,
   Query,
 } from '@nestjs/common';
+import { ApiNotFoundResponse, ApiResponse } from '@nestjs/swagger';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
@@ -17,6 +18,7 @@ export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
   @Get()
+  @ApiNotFoundResponse({ description: 'Coffee not found' })
   findAll(@Query() paginationQuery) {
     const { limit, offset } = paginationQuery;
     return this.coffeesService.findAll();
