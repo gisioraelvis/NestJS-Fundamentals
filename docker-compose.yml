@@ -1,10 +1,12 @@
-version: "3"
+version: '3'
 
 services:
   db:
     image: postgres
     restart: always
     ports:
-      - "5433:5433"
+      - '5432:5432'
     environment:
-      POSTGRESS_PASSWORD: postgres
+      - POSTGRES_USER=gisioraelvis
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=nestjs-fundamentals
